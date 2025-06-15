@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event App - Event Detail</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/event_detail.css">
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/flash.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="home" href="/home">
+          <img class="logo" src="/static/images/eventapp-logo.png" alt="Logo">
+          <h3>Event App</h3>
+        </a>
+
+        <div class="nav-bar">
+          <% if (typeof isAuthenticated !== 'undefined' && isAuthenticated) {%>
+            <% if (typeof isOrganizer !== 'undefined' && isOrganizer) { %>
+              <a href="/events/new">Create New Events</a> | 
+              <a href="/events/created">Created Events</a> | 
+            <% } %>
+            <a href="/events/subscribed">Subscribed Events</a>
+            <form method="POST" action="/logout" style="display:inline;">
+              <button type="submit" class="btn logout">LOGOUT</button>
+            </form>
+          <% } else { %>
+            <a class="btn sign-up" href="/register">SIGN UP</a>
+            <a class="btn login" href="/login">LOGIN</a>
+          <% } %>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2>EVENT DETAILS</h2>
+
+      <% if (typeof event !== 'undefined' && event) { %>
+      	<h4><%= event.name %></h4>
+      	<% if (typeof isSignedUp !== 'undefined' && isSignedUp) { %>
+      		<p class="message">✅ Hey <%= username %>, you are already registered for this event.</p>
+      	<% } %>
+
+		    <p><strong>Date and time:</strong> 
+		      <%= new Date(event.dateTime).toLocaleString('it-IT',
+		      		{ dateStyle: 'long', timeStyle: 'short' }) %>
+		    </p>
+		    <p><strong>Location:</strong> <%= event.location %></p>
+        <p><strong>Seats still available:</strong> 
+          <% if (event.hasCapacity) { %>
+            <%= event.capacity - event.nParts %> / <%= event.capacity %>
+          <% } else  { %>
+            This event does not have a maximum capacity.
+          <% } %>
+        </p>
+        <p><strong>Category</strong></p>
+        <div class="categories-container">
+          <% if (event.categories.length === 0) { %>
+            <p>This event has no categories.</p>
+          <% } else { %>
+            <% event.categories.forEach(category => { %>
+              <div class="tag"><%= category %></div>
+            <% }); %>
+          <% } %>
+        </div>
+		    <p><strong>Description</strong></p>
+		    <p>
+          <% if (event.description) { %>
+            <%= event.description %>
+          <% } else { %>
+            No description available.
+          <% } %>
+        </p>
+
+		    <% if (typeof isAuthenticated !== 'undefined' && isAuthenticated) {%>
+          <%
+            const now = new Date();
+            now.setHours(now.getHours() + 2);
+            if (new Date(event.dateTime) < now) {
+          %>
+            <p class="message">⚠️ This event has already ended. Registration is no longer possible.</p>
+            <div class="btn-row">
+              <a class="btn home" href="/home">Back to the homepage</a>
+            </div>
+          <% } else if (event.nParts === event.capacity) { %>
+            <p class="message">⚠️ You cannot register for this event. This event is full!</p>
+            <div class="btn-row">
+              <a class="btn home" href="/home">Back to the homepage</a>
+            </div>
+          <% } else { %>
+  		    	<p class="message">* Use the button below to subscribe / unsubscribe from the event.</p>
+
+            <div class="btn-row">
+    		    	<% if (typeof isSignedUp !== 'undefined' && isSignedUp) { %>
+    				    <form method="POST" action="/events/<%= event._id %>/unsubscribe" style="display:inline;">
+    				    	<button type="submit" class="btn">UNSUBSCRIBE</button>
+    				    </form>
+    				  <% } else { %>
+    				    <form method="POST" action="/events/<%= event._id %>/subscribe" style="display:inline;">
+    				    	<button type="submit" class="btn">SUBSCRIBE</button>
+    				    </form>
+    				  <% } %>
+
+              <a class="btn home" href="/home">Back to the homepage</a>
+            </div>
+          <% } %>
+		    <% } else { %>
+          <div class="btn-row">
+            <a class="btn home" href="/home">Back to the homepage</a>
+          </div>
+        <% } %>
+
+      <% } else { %>
+        <p>The event was not found!</p>
+        <div class="btn-row">
+          <a class="btn home" href="/home">Back to the homepage</a>
+        </div>
+      <% } %>
+
+      <% if (typeof isOrganizer !== 'undefined' && isOrganizer) { %>
+        <hr>
+        <details>
+          <summary>Participants</summary>
+          <% if (typeof participants !== 'undefined' && participants.length !== 0) { %>
+            <ul>
+              <% participants.forEach(username => { %>
+                <li><%= username %></li>
+              <% }); %>
+            </ul>
+          <% } else { %>
+            <p>There are no participants registered for this event!</p>
+          <% } %>
+        </details>
+      <% } %>
+    </main>
+
+    <% if (flash) { %>
+      <div class="flash <%= flash.type %>"><%= flash.message %></div>
+    <% } %>
+
+    <!-- -->
+
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="/static/javascripts/event_detail.js"></script>
+  </body>
+</html>

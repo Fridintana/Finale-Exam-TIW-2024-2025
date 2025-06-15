@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event App - Home</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/home.css">
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/flash.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="home" href="/home">
+          <img class="logo" src="/static/images/eventapp-logo.png" alt="Logo">
+          <h3>Event App</h3>
+        </a>
+
+        <div class="nav-bar">
+          <% if (typeof isAuthenticated !== 'undefined' && isAuthenticated) {%>
+            <% if (typeof isOrganizer !== 'undefined' && isOrganizer) { %>
+              <a href="/events/new">Create New Events</a> | 
+              <a href="/events/created">Created Events</a> | 
+            <% } %>
+            <a href="/events/subscribed">Subscribed Events</a>
+            <form method="POST" action="/logout" style="display:inline;">
+              <button type="submit" class="btn logout">LOGOUT</button>
+            </form>
+          <% } else { %>
+            <a class="btn sign-up" href="/register">SIGN UP</a>
+            <a class="btn login" href="/login">LOGIN</a>
+          <% } %>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2>UPCOMING EVENTS</h2>
+
+      <div class="search">
+        <label>Search by category</label>
+        <input type="text" name="category" placeholder="Type a category and press Enter ...">
+        <div class="categories-container">
+          
+        </div>
+      </div>
+
+      <div class="tabs">
+        
+      </div>
+      <div class="content">
+        
+      </div>
+    </main>
+
+    <% if (flash) { %>
+      <div class="flash <%= flash.type %>"><%= flash.message %></div>
+    <% } %>
+
+    <!-- -->
+
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="/static/javascripts/home.js"></script>
+  </body>
+</html>

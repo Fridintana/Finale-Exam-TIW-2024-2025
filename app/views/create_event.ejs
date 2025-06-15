@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Event App - Create Event</title>
+
+		<link rel="stylesheet" type="text/css" href="/static/stylesheets/create_event.css">
+	</head>
+	<body>
+		<header>
+	      <div class="container">
+	        <a class="home" href="/home">
+	          <img class="logo" src="/static/images/eventapp-logo.png" alt="Logo">
+	          <h3>Event App</h3>
+	        </a>
+
+	        <div class="nav-bar">
+	        	<a href="#">Create New Events</a> | 
+	            <a href="/events/created">Created Events</a> | 
+	            <a href="/events/subscribed">Subscribed Events</a>
+	            <form method="POST" action="/logout" style="display:inline;">
+	              <button type="submit" class="btn logout">LOGOUT</button>
+	            </form>
+	        </div>
+	      </div>
+	    </header>
+
+		<main>
+			<div class="container">
+				<form class="new-event-form" method="POST" action="/events/new">
+					<h2>CREATE A NEW EVENT</h2>
+					<label for="name">Name of the event</label>
+					<input class="form-input" type="text" name="name" required>
+
+					<section class="date-time-info">
+						<label for="date">Date and time: </label>
+						<% const now = new Date() %>
+						<% now.setHours(now.getHours() + 2) %>
+						<% const min = now.toISOString().slice(0,16) %>
+						<input class="form-input" type="datetime-local" name="date" required min="<%= min %>">
+						<!--input class="form-input" type="date" name="date" required>
+						<input class="form-input" type="time" name="time" required-->
+					</section>
+
+					<label for="location">Location</label>
+					<input class="form-input" type="text" name="location" required>
+
+					<section class="capacity-info">
+						<label for="hasCapacity">Set capacity: </label>
+						<input id="hasCapacityCheckbox" class="form-input" type="checkbox" name="hasCapacity" onclick="toggle()">
+
+						<label for="capacity">Capacity: </label>
+						<input id="capacity" class="form-input" type="number" name="capacity" min="1" disabled>
+					</section>
+
+					<section class="categories-info">
+						<label for="categories">Categories</label>
+						<p>Click the + button to add a category. Type a category and press Enter.</p>
+						<br>
+						<input type="hidden" name="categories">
+						<div class="categories-container"></div>
+					</section>
+
+					<label for="description">Description</label>
+					<textarea class="form-input" name="description" placeholder="Write a description (optional) ..."></textarea>
+
+					<button type="submit">Create event</button>
+				</form>
+			</div>
+		</main>
+
+	    <!-- -->
+
+	    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	    <script src="/static/javascripts/create_event.js"></script>
+	</body>
+</html>

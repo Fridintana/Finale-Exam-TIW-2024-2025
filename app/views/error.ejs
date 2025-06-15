@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Error Page</title>
+
+		<link rel="icon" type="image/png" href="/static/images/eventapp-logo.png">
+    	<link rel="stylesheet" type="text/css" href="/static/stylesheets/error.css">
+	</head>
+	<body>
+		<div class="error">
+			<div class="message">
+				<h2>Error <%= status %></h2>
+				<p><%= message %></p>
+				<a class="btn" href="/home">Back to the homepage</a>
+			</div>
+		</div>
+	</body>
+</html>
