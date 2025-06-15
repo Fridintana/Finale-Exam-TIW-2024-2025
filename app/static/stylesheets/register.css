@@ -1,0 +1,71 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.register {
+	/* TODO: vedere l'unità di misura vh */
+	min-height: 100vh;
+	background: url(../images/background.png) no-repeat;
+	background-size: cover;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.register .logo {
+	/* TODO: vedere cosa fa questa istruzione */
+	width: max(25vw, 200px);
+}
+
+.register-form {
+	padding: 20px 30px;
+	background-color: #fff;
+
+	border-radius: 10px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.register-form .message {
+	padding: 5px 10px;
+	border: 1px solid #f00;
+	border-radius: 5px;
+
+	background-color: rgba(255, 0, 0, 0.25);
+	color: #f00;
+}
+
+.register-form .form-input {
+	padding: 5px 10px;
+	border: 1px solid #c9c9c9;
+	border-radius: 5px;
+	/* Imposta il colore quando l'input viene selezionato */
+	outline-color: #077eff;
+}
+
+.register-form button {
+	padding: 10px;
+
+	border: none;
+	border-radius: 5px;
+	
+	background-color: #077eff;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.register-form .login-toggle {
+	font-size: 14px;
+	color: #5c5c5c;
+}
+
+.register-form .login-toggle a {
+	color: #077eff;
+}

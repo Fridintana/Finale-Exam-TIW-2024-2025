@@ -1,0 +1,163 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 1000px;
+	margin: auto;
+}
+
+/* HEADER */
+header {
+	padding: 10px 0;
+	background-color: #5287ef; /*#077eff*/
+}
+
+header .container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.home {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+
+	text-decoration: none;
+}
+
+.home .logo {
+	width: 100px;
+	aspect-ratio: 1/1;
+}
+
+.home h3 {
+	color: #fff;
+	font-size: 26px;
+}
+
+.nav-bar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+
+.nav-bar a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.btn {
+	padding: 5px 10px;
+	border: 2px solid #000;
+	border-radius: 4px;
+
+	background-color: #9657ea;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	font-family: serif;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+/* MAIN */
+main {
+	padding: 20px 0;
+}
+
+main h2 {
+	margin: 20px 0;
+	font-size: 32px;
+}
+
+.tabs span {
+    width: 200px;
+    display: inline-block;
+    
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+    background: #ddd;
+    
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tabs span.active {
+  background: #eee;
+}
+
+.content {
+    padding: 30px 20px 30px 20px;
+    border-radius: 0 5px 5px 5px;
+    background: #eee;
+}
+
+main .events {
+	min-height: 400px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: start;
+	flex-wrap: wrap;
+
+	/*height: 400px
+	overflow-y: auto;*/
+}
+
+main .event-card {
+	width: 300px;
+	min-height: 200px;
+
+	margin: 5px;
+	padding: 10px 10px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	background-color: #fff;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.event-card h4 {
+	font-size: 26px;
+}
+
+.event-card section.info {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 5px;
+}
+
+.categories-container {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+	padding: 5px 10px;
+	border-radius: 20px;
+	background-color: #e0e0e0;
+	text-align: center;
+}
+
+.event-card a {
+	color: #fff;
+	text-decoration: none;
+}

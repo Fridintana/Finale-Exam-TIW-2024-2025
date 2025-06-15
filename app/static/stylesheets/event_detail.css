@@ -1,0 +1,131 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 1000px;
+	margin: auto;
+}
+
+/* HEADER */
+header {
+	padding: 10px 0;
+	background-color: #5287ef; /*#077eff*/
+}
+
+header .container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.home {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+
+	text-decoration: none;
+}
+
+.home .logo {
+	width: 100px;
+	aspect-ratio: 1/1;
+}
+
+.home h3 {
+	color: #fff;
+	font-size: 26px;
+}
+
+.nav-bar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+
+.nav-bar a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.btn {
+	padding: 5px 10px;
+	border: 2px solid #000;
+	border-radius: 4px;
+
+	background-color: #9657ea;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	font-family: serif;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+/* MAIN */
+main {
+	padding: 20px 0;
+}
+
+main h2 {
+	margin: 20px 0;
+	font-size: 32px;
+}
+
+main h4 {
+	text-align: center;
+	font-size: 24px;
+}
+
+main p {
+	margin: 10px 0;
+	font-size: 20px;
+}
+
+main .categories-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+main .tag {
+	padding: 5px 10px;
+	border-radius: 20px;
+	background-color: #e0e0e0;
+	text-align: center;
+}
+
+main .message {
+	color: #aaa;
+	font-size: 16px;
+}
+
+main .btn-row {
+	display: flex;
+	flex-direction: row;
+}
+
+main .btn-row .home {
+	margin-left: auto;
+}
+
+hr {
+	margin: 20px 0;
+}
+
+details {
+	font-size: 20px;
+}
+
+details ul {
+	padding-inline-start: 20px;
+	list-style-position: inside;
+}

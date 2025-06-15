@@ -1,0 +1,49 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.error {
+	/* TODO: vedere l'unità di misura vh */
+	min-height: 100vh;
+	background: url(../images/background.png) no-repeat;
+	background-size: cover;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.message {
+	width: 600px;
+
+	padding: 20px 40px;
+	border-radius: 20px;
+	background-color: #fff;
+
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	align-items: start;
+}
+
+p {
+	font-size: 20px;
+}
+
+.btn {
+	padding: 5px 10px;
+	border: 2px solid #000;
+	border-radius: 4px;
+
+	background-color: #9657ea;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	font-family: serif;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+}
